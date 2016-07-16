@@ -1,0 +1,1 @@
+add_subdirectory(cores/esp8266)

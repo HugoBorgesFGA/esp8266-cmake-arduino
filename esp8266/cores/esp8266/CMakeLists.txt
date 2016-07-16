@@ -1,0 +1,39 @@
+set(SOURCE
+	cont.S
+	abi.cpp
+	cont_util.c
+	core_esp8266_eboot_command.c
+	core_esp8266_flash_utils.c
+	core_esp8266_i2s.c
+	core_esp8266_noniso.c
+	core_esp8266_phy.c
+	core_esp8266_postmortem.c
+	core_esp8266_si2c.c 
+	core_esp8266_timer.c
+	core_esp8266_wiring_analog.c	
+	core_esp8266_wiring.c 
+	core_esp8266_wiring_digital.c
+	core_esp8266_wiring_pulse.c
+	core_esp8266_wiring_pwm.c
+	core_esp8266_wiring_shift.c
+	debug.cpp
+	Esp.cpp
+	HardwareSerial.cpp
+	IPAddress.cpp
+	libc_replacements.c 	
+	pgmspace.cpp
+	Print.cpp
+	Stream.cpp
+	Tone.cpp
+	Updater.cpp
+	WMath.cpp
+	WString.cpp
+	spiffs/spiffs_cache.c
+	spiffs/spiffs_check.c
+	spiffs/spiffs_gc.c
+	spiffs/spiffs_hydrogen.c
+	spiffs/spiffs_nucleus.c
+)
+
+add_library(arduino STATIC ${SOURCE})
+target_link_libraries(arduino ${BASIC_LIBS})

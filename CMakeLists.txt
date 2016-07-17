@@ -8,11 +8,12 @@ set(CORE_ROOT           "${ESP_ROOT}/cores/esp8266")
 
 set(SDK_ROOT            "${ESP_ROOT}/tools/sdk")
 set(TOOLS_ROOT          "${ESP_ROOT}/tools")
-set(TOOLS_BIN           "${TOOLS_ROOT}/xtensa-lx106-elf/bin")
+set(TOOLCHAIN_ROOT      "${TOOLS_ROOT}/xtensa-lx106-elf")
+set(TOOLS_BIN           "${TOOLCHAIN_ROOT}/bin")
 
 include(esp8266.cmake)
 
-set(INCLUDE_DIRS
+set(BASIC_INCLUDE_DIRS
     "${ESP_ROOT}/cores/esp8266"
     "${ESP_ROOT}/variants/generic"
 	"${SDK_ROOT}/include"
@@ -20,10 +21,27 @@ set(INCLUDE_DIRS
     #"${OBJ_DIR}"
 )
 
-set(BASIC_LIBS gcc hal phy net80211 lwip wpa main pp smartconfig wps lcrypto)
+set(BASIC_LINK_DIRS
+	"${SDK_ROOT}/lib"
+	"${TOOLCHAIN_ROOT}/lib"
+)
 
-include_directories(${INCLUDE_DIRS})
+set(BASIC_LIBS 
+	gcc 
+	hal 
+	phy 
+	net80211 
+	lwip 
+	wpa 
+	main 
+	pp 
+	smartconfig
+	wps 
+	crypto
+)
 
+link_directories(${BASIC_LINK_DIRS})
+include_directories(${BASIC_INCLUDE_DIRS})
 
 add_subdirectory(esp8266)
 #add_subdirectory(sketchs)
